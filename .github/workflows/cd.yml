@@ -1,10 +1,10 @@
 # CD — 构建并推送 Docker 镜像 / Build & Push Docker Image
-# 推送到 main 分支或创建 v* tag 时，构建镜像并推送到 ghcr.io
+# 推送到 master 分支或创建 v* tag 时，构建镜像并推送到 ghcr.io
 name: CD
 
 on:
   push:
-    branches: [main]
+    branches: [master]
     tags: ["v*"]
 
 permissions:
@@ -39,7 +39,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            # 当推送到 main 时打 latest 标签
+            # 当推送到 master 时打 latest 标签
             type=raw,value=latest,enable={{is_default_branch}}
             # 当推送 v* tag 时使用语义化版本
             type=semver,pattern={{version}}
