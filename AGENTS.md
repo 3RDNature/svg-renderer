@@ -41,12 +41,12 @@ framework is in the dependencies. If you add tests:
 
 ### Linting & Formatting
 
-No linter or formatter is configured in the project. The `.dockerignore`
-references `.ruff_cache/`, suggesting **Ruff** is the intended tool. If using Ruff:
+**Ruff** is configured as a dev dependency and enforced by CI:
 
 - Lint: `uv run ruff check .`
 - Format: `uv run ruff format .`
 - Auto-fix lint issues: `uv run ruff check --fix .`
+- Format check (CI mode): `uv run ruff format --check .`
 
 ### Type Checking
 
